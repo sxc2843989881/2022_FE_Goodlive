@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function fruit2(){
+ this.name = 'fruit';
+ this.arr = [1,2,3];
+ }
+ function apple2(){
+ fruit2.call(this);
+ this.type='apple';
+ }
+ apple2.prototype = Object.create(fruit2.prototype); //这⾥使⽤Object.create()⽅
+//法，和之前直接⽤fruit2.prototype来说，它创建了⼀个中间对象，和⽗类不是指向同⼀个区域了
+ //这样就能区分⽗类和⼦类的原型对象了，达到⽗类和⼦类原型对象的隔离效果
+ apple2.prototype.constructor = apple2; //由于隔离了⽗类⼦类的原型对象，我们就可以指定
+//⼦类⾃⼰的constructor
+ var app5 = new apple2();
+ var app6 = new apple2();
+ app5.arr.push(4);
+ console.log(app5,app6);
+ //判断实例
+ console.log(app5 instanceof apple2);
+ console.log(app5 instanceof fruit2); //因此，这⾥可以判断当前对象是由⽗类产⽣的实例对象
+//还是由⼦类产⽣的实例对象
+ //判断构造函数
+ console.log(app5.constructor);
+
+ console.log(app5);
+</script>
+<body>
+    
+</body>
+</html>

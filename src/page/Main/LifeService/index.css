@@ -1,0 +1,13 @@
+.iframe1{
+    display: block;
+    border: hidden;
+    width: 392px;
+    height: 600px;
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.nij{
+    width: 375px;
+    overflow: hidden;
+}
